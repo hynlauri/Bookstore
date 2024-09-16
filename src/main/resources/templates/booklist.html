@@ -9,6 +9,8 @@
 </head>
 <body>
     <h1>Book List</h1>
+    <p><a href="/addbook">Add Book</a></p> 
+
     <table>
         <thead>
             <tr>
@@ -18,6 +20,7 @@
                 <th>Publication Year</th>
                 <th>ISBN</th>
                 <th>Price</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +31,9 @@
                 <td th:text="${book.publicationYear}"></td>
                 <td th:text="${book.isbn}"></td>
                 <td th:text="${book.price}"></td>
+                <td>
+                    <a th:href="@{/deletebook/{id}(id=${book.id})}">Delete</a>
+                </td>
             </tr>
         </tbody>
     </table>
