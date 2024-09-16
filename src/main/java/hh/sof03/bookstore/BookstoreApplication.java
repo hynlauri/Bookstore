@@ -18,8 +18,8 @@ public class BookstoreApplication {
     @Bean
 CommandLineRunner runner(BookRepository bookRepository) {
     return args -> {
-        bookRepository.save(new Book("title", "author", 0, "123456789", 0));
-        bookRepository.save(new Book("Title", "author", 0, "isbn", 0));
+        bookRepository.save(new Book("Moby dick", "Herman Melville", 1851, "0-393-09670-X", 13.00));
+        bookRepository.save(new Book("Poika raidallisessa pyjamassa", "John Boyne", 2006, "0-385-60940-X", 8.90));
     };
 }
 
