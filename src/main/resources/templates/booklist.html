@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Book List</title>
-    <style>
-        
-    </style>
+    
 </head>
 <body>
     <h1>Book List</h1>
-    <p><a href="/addbook">Add Book</a></p> 
+    <p><a href="/addbook">Add Book</a></p>
 
     <table>
         <thead>
@@ -32,6 +30,7 @@
                 <td th:text="${book.isbn}"></td>
                 <td th:text="${book.price}"></td>
                 <td>
+                    <a th:href="@{/editbook/{id}(id=${book.id})}">Edit</a> |
                     <a th:href="@{/deletebook/{id}(id=${book.id})}">Delete</a>
                 </td>
             </tr>
