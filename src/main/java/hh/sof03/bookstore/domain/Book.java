@@ -1,15 +1,12 @@
 package hh.sof03.bookstore.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-@Entity
+@Entity  
 public class Book {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id 
+    @GeneratedValue(strategy = GenerationType.AUTO) 
     private Long id;
 
     private String title;
@@ -18,22 +15,26 @@ public class Book {
     private String isbn;
     private double price;
 
+    @ManyToOne  // Monet kirjat voivat kuulua samaan kategoriaan
+    @JoinColumn(name = "categoryid")  // Viittaa Category-luokan id:hen
+    private Category category;
+
+    // Tyhjät konstruktori
     public Book() {}
 
-    public Book(String title, String author, int publicationYear, String isbn, double price) {
+    // Konstruktori, joka ottaa kaikki kentät vastaan
+    public Book(String title, String author, int publicationYear, String isbn, double price, Category category) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
         this.isbn = isbn;
         this.price = price;
+        this.category = category;
     }
 
+    // Getterit ja setterit
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -76,9 +77,17 @@ public class Book {
         this.price = price;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
-                + ", isbn=" + isbn + ", price=" + price + "]";
+                + ", isbn=" + isbn + ", price=" + price + ", category=" + (category != null ? category.getName() : "No category") + "]";
     }
 }
