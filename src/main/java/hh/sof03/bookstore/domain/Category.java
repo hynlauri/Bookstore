@@ -1,19 +1,20 @@
 package hh.sof03.bookstore.domain;
 
 import jakarta.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity 
+@Entity
 public class Category {
 
-    @Id 
-    @GeneratedValue(strategy = GenerationType.AUTO)  // Avain generoidaan automaattisesti
-    private Long categoryid;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long categoryId;
+    
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")  // Yhteys Book-luokkaan
-    private List<Book> books;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    private List<Book> books = new ArrayList<>(); 
 
     public Category() {}
 
@@ -21,12 +22,13 @@ public class Category {
         this.name = name;
     }
 
-    public Long getCategoryid() {
-        return categoryid;
+    // Getters and Setters
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoryid(Long categoryid) {
-        this.categoryid = categoryid;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {
@@ -47,6 +49,6 @@ public class Category {
 
     @Override
     public String toString() {
-        return "Category [categoryid=" + categoryid + ", name=" + name + "]";
+        return "Category [categoryId=" + categoryId + ", name=" + name + "]";
     }
 }

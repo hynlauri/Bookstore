@@ -2,11 +2,11 @@ package hh.sof03.bookstore.domain;
 
 import jakarta.persistence.*;
 
-@Entity  
+@Entity
 public class Book {
 
-    @Id 
-    @GeneratedValue(strategy = GenerationType.AUTO) 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String title;
@@ -15,14 +15,12 @@ public class Book {
     private String isbn;
     private double price;
 
-    @ManyToOne  // Monet kirjat voivat kuulua samaan kategoriaan
-    @JoinColumn(name = "categoryid")  // Viittaa Category-luokan id:hen
+    @ManyToOne
+    @JoinColumn(name = "category_id") 
     private Category category;
 
-    // Tyhjät konstruktori
     public Book() {}
 
-    // Konstruktori, joka ottaa kaikki kentät vastaan
     public Book(String title, String author, int publicationYear, String isbn, double price, Category category) {
         this.title = title;
         this.author = author;
@@ -32,9 +30,13 @@ public class Book {
         this.category = category;
     }
 
-    // Getterit ja setterit
+    // Getters and Setters
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -88,6 +90,6 @@ public class Book {
     @Override
     public String toString() {
         return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
-                + ", isbn=" + isbn + ", price=" + price + ", category=" + (category != null ? category.getName() : "No category") + "]";
+                + ", isbn=" + isbn + ", price=" + price + ", category=" + (category != null ? category.getName() : "No Category") + "]";
     }
 }
