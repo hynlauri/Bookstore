@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 @Entity
 public class Book {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -16,8 +15,11 @@ public class Book {
     private double price;
 
     @ManyToOne
-    @JoinColumn(name = "category_id") 
-    private Category category;
+    @JoinColumn(name = "categoryid")
+    private Category category; 
+
+
+
 
     public Book() {}
 
