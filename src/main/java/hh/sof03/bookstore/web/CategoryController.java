@@ -22,7 +22,7 @@ public class CategoryController {
     public String getCategoryList(Model model) {
         List<Category> categories = (List<Category>) categoryRepository.findAll();
         model.addAttribute("categories", categories);
-        return "categorylist"; 
+        return "categorylist";
     }
 
     @GetMapping("/addcategory")
@@ -37,4 +37,3 @@ public class CategoryController {
         return "redirect:/categories/categorylist";
     }
 }
-

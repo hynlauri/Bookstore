@@ -25,6 +25,7 @@ public class BookstoreApplication {
             Category scifi = new Category("Sci-fi");
             Category comic = new Category("Comic");
             Category fantasy = new Category("Fantasy");
+            
             categoryRepository.saveAll(Arrays.asList(scifi, comic, fantasy));
             
             Book[] books = {

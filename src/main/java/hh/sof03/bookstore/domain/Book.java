@@ -1,13 +1,17 @@
 package hh.sof03.bookstore.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String title;
     private String author;
     private int publicationYear;
@@ -15,11 +19,8 @@ public class Book {
     private double price;
 
     @ManyToOne
-    @JoinColumn(name = "categoryid")
-    private Category category; 
-
-
-
+    @JsonIgnore 
+    private Category category;
 
     public Book() {}
 
@@ -32,7 +33,6 @@ public class Book {
         this.category = category;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

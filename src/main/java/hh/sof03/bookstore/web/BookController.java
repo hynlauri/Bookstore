@@ -23,7 +23,7 @@ public class BookController {
 
     @GetMapping("/addbook")
     public String showAddBookForm(Model model) {
-        model.addAttribute("book", new Book());
+        model.addAttribute("book", new Book()); 
         
         List<Category> categories = (List<Category>) categoryRepository.findAll();
         model.addAttribute("categories", categories);
