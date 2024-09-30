@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Category List</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
     <h1>Category List</h1>
@@ -15,7 +14,7 @@
         </thead>
         <tbody>
             <tr th:each="category : ${categories}">
-                <td th:text="${category.categoryid}"></td>
+                <td th:text="${category.categoryId}"></td>
                 <td th:text="${category.name}"></td>
             </tr>
         </tbody>
